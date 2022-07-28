@@ -7,7 +7,7 @@
     <ImplicitUsings>disable</ImplicitUsings>
 
     <PackageId>ZySharp.Metaprogramming</PackageId>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <Authors>Florian Bernd</Authors>
     <Description>A modern C# metaprogramming library.</Description>
     <Company />
@@ -16,6 +16,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/flobernd/zysharp-metaprogramming</PackageProjectUrl>
     <RepositoryUrl>https://github.com/flobernd/zysharp-metaprogramming</RepositoryUrl>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <Product>ZySharp</Product>
     <NeutralLanguage>en</NeutralLanguage>
@@ -24,6 +25,7 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
 
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
@@ -61,6 +63,10 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <CustomToolNamespace>ZySharp.Metaprogramming</CustomToolNamespace>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All"/>
   </ItemGroup>
 
   <ItemGroup>

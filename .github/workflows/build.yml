@@ -91,7 +91,7 @@ jobs:
           dotnet-version: 6.0.x
 
       - name: Generate NuGet Packages
-        run: dotnet pack --configuration Release -o out
+        run: dotnet pack --configuration Release -o out /p:ContinuousIntegrationBuild=true
 
       - name: Publish to NuGet
         run: dotnet nuget push out/*.nupkg -k ${{secrets.NUGET_API_KEY}} -s https://api.nuget.org/v3/index.json --skip-duplicate
