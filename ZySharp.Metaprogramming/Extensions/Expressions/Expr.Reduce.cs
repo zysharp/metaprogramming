@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.Contracts;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.Contracts;
 using System.Linq.Expressions;
 
 namespace ZySharp.Metaprogramming.Extensions.Expressions
@@ -15,6 +16,7 @@ namespace ZySharp.Metaprogramming.Extensions.Expressions
         /// a reduced node does not satisfies certain invariants (see <see cref="Expression.ReduceAndCheck()"/>).
         /// </remarks>
         [Pure]
+        [return: NotNullIfNotNull("expression")]
         public static Expression? ReduceRecursive(this Expression? expression)
         {
             return new ReduceVisitor(false).Visit(expression);
@@ -30,6 +32,7 @@ namespace ZySharp.Metaprogramming.Extensions.Expressions
         /// a reduced node does not satisfies certain invariants (see <see cref="Expression.ReduceAndCheck()"/>).
         /// </remarks>
         [Pure]
+        [return: NotNullIfNotNull("expression")]
         public static Expression? ReduceExtensionsRecursive(this Expression? expression)
         {
             return new ReduceVisitor(true).Visit(expression);
