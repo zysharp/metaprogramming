@@ -7,6 +7,13 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 
+env:
+  SONAR_ORGANIZATION: flobernd
+  SONAR_PROJECT: flobernd_zysharp-metaprogramming
+  PROJ_PATTERN: '**/*.csproj'
+  TEST_PATTERN: '**/*.Tests.csproj'
+  GLOB_EXEC_EXCLUDE: 'Dependencies/*'
+
 jobs:
   ci:
     name: CI
@@ -56,17 +63,50 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          ./.sonar/scanner/dotnet-sonarscanner begin /k:"flobernd_zysharp-metaprogramming" /o:"flobernd" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="**/TestResults/**/coverage.opencover.xml" -d:sonar.cs.vstest.reportsPaths="**/TestResults/*.trx"
+        run: >
+          ./.sonar/scanner/dotnet-sonarscanner begin
+          /k:"${{ env.SONAR_PROJECT }}"
+          /o:"${{ env.SONAR_ORGANIZATION }}"
+          /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+          /d:sonar.host.url="https://sonarcloud.io"
+          /d:sonar.cs.opencover.reportsPaths="**/TestResults/**/coverage.opencover.xml"
+          /d:sonar.cs.vstest.reportsPaths="**/TestResults/*.trx"
+
+      - name: Cache NuGet Packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: ${{ runner.os }}-nuget-
 
       - name: .NET Restore
-        run: dotnet restore
+        run: >
+          python ./.github/scripts/glob_exec.py --pattern "${{ env.PROJ_PATTERN }}"
+          '
+          dotnet restore
+          {}
+          '
 
       - name: .NET Build
-        run: dotnet build --no-restore --no-incremental
+        run: >
+          python ./.github/scripts/glob_exec.py --pattern "${{ env.PROJ_PATTERN }}"
+          '
+          dotnet build
+          --no-restore
+          {}
+          '
 
       - name: .NET Test
-        run: dotnet test --no-build --logger:"trx;LogFilePrefix=results" --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+        run: >
+          python ./.github/scripts/glob_exec.py --pattern "${{ env.TEST_PATTERN }}"
+          '
+          dotnet test
+          --no-build
+          --logger:"trx;LogFilePrefix=results"
+          --collect:"XPlat Code Coverage"
+          {}
+          -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+          '
 
       - name: SonarCloud End Analysis
         env:
@@ -92,8 +132,36 @@ jobs:
         with:
           dotnet-version: 6.0.x
 
-      - name: Generate NuGet Packages
-        run: dotnet pack --configuration Release -o out /p:ContinuousIntegrationBuild=true
+      - name: Cache NuGet Packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: ${{ runner.os }}-nuget-
+
+      - name: .NET Restore
+        run: >
+          python ./.github/scripts/glob_exec.py --pattern "${{ env.PROJ_PATTERN }}"
+          '
+          dotnet restore
+          {}
+          '    
+
+      - name: .NET Pack
+        run: >
+          python ./.github/scripts/glob_exec.py --pattern "${{ env.PROJ_PATTERN }}"
+          '
+          dotnet pack
+          --no-restore
+          --configuration Release
+          --output ./out
+          -p:ContinuousIntegrationBuild=true
+          {}
+          '
 
       - name: Publish to NuGet
-        run: dotnet nuget push out/*.nupkg -k ${{secrets.NUGET_API_KEY}} -s https://api.nuget.org/v3/index.json --skip-duplicate
+        run: >
+          dotnet nuget push ./out/*.nupkg
+          -k ${{secrets.NUGET_API_KEY}}
+          -s https://api.nuget.org/v3/index.json
+          --skip-duplicate

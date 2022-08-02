@@ -6,6 +6,9 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>disable</ImplicitUsings>
 
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <RestoreLockedMode Condition="'$(ContinuousIntegrationBuild)' == 'true'" />
+
     <PackageId>ZySharp.Metaprogramming</PackageId>
     <Version>1.0.5</Version>
     <Authors>Florian Bernd</Authors>
