@@ -17,7 +17,7 @@ namespace ZySharp.Metaprogramming.Tests
 
             var nodeOld = input.Parameters.First();
             var nodeNew = Expression.Parameter(typeof(int), "x");
-            var result = input.Replace(nodeOld, nodeNew)!;
+            var result = input.Replace(nodeOld, nodeNew);
 
             var expected = Lambda.Expr((int x, int b) => x + b);
 
@@ -34,7 +34,7 @@ namespace ZySharp.Metaprogramming.Tests
                 { input.Parameters[0], Expression.Parameter(typeof(int), "x") },
                 { input.Parameters[1], Expression.Parameter(typeof(int), "y") },
             };
-            var result = input.Replace(map)!;
+            var result = input.Replace(map);
 
             var expected = Lambda.Expr((int x, int y) => x + y);
 

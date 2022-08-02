@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Contracts;
 using System.Globalization;
 using System.Linq;
@@ -29,6 +30,7 @@ namespace ZySharp.Metaprogramming
         /// <see cref="Invoke{TResult}"/>.
         /// </remarks>
         [Pure]
+        [return: NotNullIfNotNull("expression")]
         public static Expression<TDelegate>? Expand<TDelegate>(this Expression<TDelegate>? expression)
         {
             return Expand((Expression?)expression) as Expression<TDelegate>;
@@ -36,6 +38,7 @@ namespace ZySharp.Metaprogramming
 
         /// <inheritdoc cref="Expand{TDelegate}"/>
         [Pure]
+        [return: NotNullIfNotNull("expression")]
         public static Expression? Expand(this Expression? expression)
         {
             return new ExpandVisitor().Visit(expression);
@@ -43,7 +46,7 @@ namespace ZySharp.Metaprogramming
 
         #region Visitor
 
-#pragma warning disable S125 
+#pragma warning disable S125
 
         private sealed class ExpandVisitor :
             ExpressionVisitor
@@ -207,7 +210,7 @@ namespace ZySharp.Metaprogramming
             }
         }
 
-#pragma warning restore S125 
+#pragma warning restore S125
 
         #endregion Visitor
     }

@@ -18,7 +18,7 @@ namespace ZySharp.Metaprogramming.Tests
             var inner = Lambda.Expr((int x) => x == 42);
             var outer = Lambda.Expr((IEnumerable<int> x) => x.Where(inner.Compile()));
 
-            var expanded = outer.Expand()!;
+            var expanded = outer.Expand();
             var expected = Lambda.Expr((IEnumerable<int> x) => x.Where(x => x == 42));
 
             AssertEqualExpression(expected, expanded);
@@ -29,7 +29,7 @@ namespace ZySharp.Metaprogramming.Tests
         {
             var outer = Lambda.Expr((IEnumerable<int> x) => x.Where(Lambda.Func((int x) => x == 42)));
 
-            var expanded = outer.Expand()!;
+            var expanded = outer.Expand();
             var expected = Lambda.Expr((IEnumerable<int> x) => x.Where(x => x == 42));
 
             AssertEqualExpression(expected, expanded);
@@ -40,7 +40,7 @@ namespace ZySharp.Metaprogramming.Tests
         {
             var outer = Lambda.Expr((IEnumerable<int> x) => x.Where(GetPredicateDelegate()));
 
-            var expanded = outer.Expand()!;
+            var expanded = outer.Expand();
             var expected = outer;
 
             AssertEqualExpression(expected, expanded);
@@ -52,7 +52,7 @@ namespace ZySharp.Metaprogramming.Tests
             var inner = Lambda.Expr((int x) => x == 42);
             var outer = Lambda.Expr((IQueryable<int> x) => x.Where(inner));
 
-            var expanded = outer.Expand()!;
+            var expanded = outer.Expand();
             var expected = Lambda.Expr((IQueryable<int> x) => x.Where(x => x == 42));
 
             AssertEqualExpression(expected, expanded);
@@ -63,7 +63,7 @@ namespace ZySharp.Metaprogramming.Tests
         {
             var outer = Lambda.Expr((IQueryable<int> x) => x.Where(Lambda.Expr((int x) => x == 42)));
 
-            var expanded = outer.Expand()!;
+            var expanded = outer.Expand();
             var expected = Lambda.Expr((IQueryable<int> x) => x.Where(x => x == 42));
 
             AssertEqualExpression(expected, expanded);
@@ -74,7 +74,7 @@ namespace ZySharp.Metaprogramming.Tests
         {
             var outer = Lambda.Expr((IQueryable<int> x) => x.Where(GetPredicateExpression()));
 
-            var expanded = outer.Expand()!;
+            var expanded = outer.Expand();
             var expected = outer;
 
             AssertEqualExpression(expected, expanded);
@@ -86,8 +86,8 @@ namespace ZySharp.Metaprogramming.Tests
             var num42 = 42;
             var outer = Lambda.Expr((int x) => x == num42.Capture());
 
-            var expanded = outer.Expand()!;
-            var expected = Lambda.Expr((int x) => x == 42).Snapshot()!;
+            var expanded = outer.Expand();
+            var expected = Lambda.Expr((int x) => x == 42).Snapshot();
 
             AssertEqualExpression(expected, expanded);
         }
@@ -99,7 +99,7 @@ namespace ZySharp.Metaprogramming.Tests
             var upper = Lambda.Expr((int x) => x <= 42);
             var outer = Lambda.Expr((IQueryable<int> x) => x.Where(x => lower.Invoke(x) && upper.Invoke(x)));
 
-            var expanded = outer.Expand()!;
+            var expanded = outer.Expand();
             var expected = Lambda.Expr((IQueryable<int> x) => x.Where(x => x >= 10 && x <= 42));
 
             AssertEqualExpression(expected, expanded);
@@ -111,7 +111,7 @@ namespace ZySharp.Metaprogramming.Tests
             var outer = Lambda.Expr((IQueryable<int> x) => x.Where(x => Expr.Invoke(x => x >= 10, x) &&
                                                                         Expr.Invoke(x => x <= 42, x)));
 
-            var expanded = outer.Expand()!;
+            var expanded = outer.Expand();
             var expected = Lambda.Expr((IQueryable<int> x) => x.Where(x => x >= 10 && x <= 42));
 
             AssertEqualExpression(expected, expanded);
@@ -124,7 +124,7 @@ namespace ZySharp.Metaprogramming.Tests
             var inner = Lambda.Expr((int x) => x == number.Invoke());
             var outer = Lambda.Expr((IQueryable<int> x) => x.Where(x => inner.Invoke(x)));
 
-            var expanded = outer.Expand()!;
+            var expanded = outer.Expand();
             var expected = Lambda.Expr((IQueryable<int> x) => x.Where(x => x == 42));
 
             AssertEqualExpression(expected, expanded);
@@ -135,7 +135,7 @@ namespace ZySharp.Metaprogramming.Tests
         {
             var outer = Lambda.Expr((IQueryable<int> x) => x.Where(x => GetPredicateExpression().Invoke(x)));
 
-            var expanded = outer.Expand()!;
+            var expanded = outer.Expand();
             var expected = Lambda.Expr((IQueryable<int> x) => x.Where(x => x == 42));
 
             AssertEqualExpression(expected, expanded);
@@ -147,9 +147,9 @@ namespace ZySharp.Metaprogramming.Tests
             var num42 = 42;
             var outer = Lambda.Expr((IQueryable<int> x) => x.Where(x => GetPredicateExpressionWithParam(num42).Invoke(x)));
 
-            var expanded = outer.Expand()!;
+            var expanded = outer.Expand();
             num42 = 1337;
-            expanded = expanded.Snapshot()!;
+            expanded = expanded.Snapshot();
             var expected = Lambda.Expr((IQueryable<int> x) => x.Where(x => x == 42));
 
             AssertEqualExpression(expected, expanded);
