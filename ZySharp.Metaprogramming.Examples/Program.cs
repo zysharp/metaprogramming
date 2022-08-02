@@ -1,4 +1,6 @@
-﻿namespace ZySharp.Metaprogramming.Examples
+﻿using System;
+
+namespace ZySharp.Metaprogramming.Examples
 {
     public static class Program
     {
