@@ -106,7 +106,7 @@ namespace ZySharp.Metaprogramming.Tests
         {
             public int Field;
 
-            public int Prop { get; init; }
+            public int Prop { get; set; }
 
             public int MethodCall()
             {

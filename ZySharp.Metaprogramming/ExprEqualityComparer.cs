@@ -33,7 +33,7 @@ namespace ZySharp.Metaprogramming
     /// </para>
     /// </remarks>
     public class ExprEqualityComparer :
-        IEqualityComparer<Expression?>
+        IEqualityComparer<Expression>
     {
         /// <summary>
         /// The equality comparer flags set during initialization.
@@ -1147,7 +1147,7 @@ namespace ZySharp.Metaprogramming
                     (not null, null) when !x.Any() => true,
                     (null, not null) => false,
                     (not null, null) => false,
-                    ({ } a, { } b) when (a.Count == b.Count) => x.Zip(y).All(p => Compare(p.First, p.Second, compare)),
+                    ({ } a, { } b) when (a.Count == b.Count) => x.Zip(y, (a, b) => Compare(a, b, compare)).All(r => r),
                     _ => false
                 };
             }
@@ -1184,7 +1184,7 @@ namespace ZySharp.Metaprogramming
                     (not null, null) when !x.Any() => true,
                     (null, not null) => false,
                     (not null, null) => false,
-                    ({ } a, { } b) when (a.Count == b.Count) => x.Zip(y).All(p => CompareExpr(p.First, p.Second)),
+                    ({ } a, { } b) when (a.Count == b.Count) => x.Zip(y, CompareExpr).All(r => r),
                     _ => false
                 };
             }

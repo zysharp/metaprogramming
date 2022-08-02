@@ -25,6 +25,7 @@ namespace ZySharp.Metaprogramming.Tests
         }
 
         [Fact]
+        [SuppressMessage("Minor Code Smell", "S3220", Justification = "intended")]
         public void EqualsBlock()
         {
             var param = Expression.Parameter(typeof(int));
@@ -97,8 +98,8 @@ namespace ZySharp.Metaprogramming.Tests
         [Fact]
         public void EqualsDynamic()
         {
-            var obj = new ExpandoObject();
-            obj.TryAdd("key", "value");
+            dynamic obj = new ExpandoObject();
+            obj.key = "value";
 
             var x = Expression.MakeDynamic(
                 typeof(Func<CallSite, object, string>),
@@ -446,7 +447,7 @@ namespace ZySharp.Metaprogramming.Tests
         [ExcludeFromCodeCoverage]
         private sealed class TestNode
         {
-            public NodeData Data { get; init; } = new();
+            public NodeData Data { get; set; } = new();
 
             public List<TestNode> Children { get; } = new();
         }
