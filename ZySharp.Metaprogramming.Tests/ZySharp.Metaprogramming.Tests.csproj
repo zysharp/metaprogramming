@@ -6,6 +6,13 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>disable</ImplicitUsings>
 
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <!-- https://github.com/NuGet/Home/issues/9195 -->
+    <!-- https://github.com/NuGet/Home/issues/10456 -->
+    <!-- https://github.com/dotnet/sdk/issues/26505 -->
+    <!--<RestoreLockedMode Condition="'$(ContinuousIntegrationBuild)' == 'true'" />-->
+    <!--<RuntimeIdentifiers>win7-x64</RuntimeIdentifiers>-->
+
     <IsPackable>false</IsPackable>
 
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
@@ -15,6 +22,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.2.0" />
+    <!-- https://github.com/microsoft/vstest/issues/2469 -->
     <PackageReference Include="Microsoft.TestPlatform.ObjectModel" Version="17.2.0" Condition="$(TargetFramework.StartsWith('net4')) AND '$(OS)' == 'Unix'" />
     <PackageReference Include="xunit" Version="2.4.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
