@@ -1,0 +1,31 @@
+name: CD
+
+on:
+  push:
+    tags:
+      - v*
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  publish_github:
+    name: Publish to GitHub
+    uses: flobernd/workflows/.github/workflows/dotnet_nuget_push.yml@v1
+    with:
+      nuget_source: https://nuget.pkg.github.com/flobernd/index.json
+      nupkg_artifact: nupkg
+      nupkg_artifact_workflow: ci.yml
+    secrets:
+      NUGET_API_KEY: ${{ secrets.GITHUB_TOKEN }}
+
+  publish_nuget:
+    name: Publish to NuGet
+    uses: flobernd/workflows/.github/workflows/dotnet_nuget_push.yml@v1
+    with:
+      nuget_source: https://api.nuget.org/v3/index.json
+      nupkg_artifact: nupkg
+      nupkg_artifact_workflow: ci.yml
+    secrets:
+      NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
