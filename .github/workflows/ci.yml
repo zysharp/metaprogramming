@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  find_solution:
+    name: Prepare
+    uses: flobernd/workflows/.github/workflows/find_solution.yml@v1
+
+  run_tests:
+    name: Tests
+    uses: flobernd/workflows/.github/workflows/dotnet_test.yml@v1
+    needs: find_solution
+    with:
+      runs_on: |
+        ubuntu-latest
+      dotnet_version: |
+        6.0.x
+        3.1.x
+      solution: ${{ needs.find_solution.outputs.solution }}
+      project_filter: |
+        **/*.Tests.csproj
+        !Dependencies/**
+      maxdop: 0
+      use_nuget_cache: true
+      nuget_cache_key: '**/packages.lock.json'
+      archive: always
+      artifact: test-results
+
+  sonarcloud:
+    name: SonarCloud
+    uses: flobernd/workflows/.github/workflows/sonarcloud_dotnet.yml@v1
+    needs: [find_solution, run_tests]
+    with:
+      sonar_organization: flobernd
+      sonar_project_key: flobernd_zysharp-metaprogramming
+      solution: ${{ needs.find_solution.outputs.solution }}
+      project_filter: |
+        **/*.csproj
+        !Dependencies/**
+      use_nuget_cache: true
+      nuget_cache_key: '**/packages.lock.json'
+      test_results_artifact: test-results
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+  build_nuget:
+    name: Packages
+    uses: flobernd/workflows/.github/workflows/dotnet_pack.yml@v1
+    needs: [find_solution, sonarcloud]
+    with:
+      solution: ${{ needs.find_solution.outputs.solution }}
+      project_filter: |
+        **/*.csproj
+        !Dependencies/**
+        !**/*.Examples.csproj
+        !**/*.Tests.csproj
+      use_nuget_cache: true
+      nuget_cache_key: '**/packages.lock.json'
+      artifact: nupkg
