@@ -1,0 +1,51 @@
+name: CD
+
+on: 
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  create_tag:
+    name: GitHub
+    uses: flobernd/workflows/.github/workflows/nbgv_create_tag.yml@v1
+
+  find_solution:
+    name: Prepare
+    uses: flobernd/workflows/.github/workflows/find_solution.yml@v1
+
+  build_nuget:
+    name: Packages
+    uses: flobernd/workflows/.github/workflows/dotnet_pack.yml@v1
+    needs: find_solution
+    with:
+      solution: ${{ needs.find_solution.outputs.solution }}
+      project_filter: |
+        **/*.csproj
+        !**/*.Examples.csproj
+        !**/*.Tests.csproj
+      use_nuget_cache: true
+      nuget_cache_key: '**/packages.lock.json'
+      artifact: nupkg
+
+  publish_github:
+    name: Publish to GitHub
+    uses: flobernd/workflows/.github/workflows/dotnet_nuget_push.yml@v1
+    needs: build_nuget
+    with:
+      nuget_source: https://nuget.pkg.github.com/flobernd/index.json
+      nupkg_artifact: nupkg
+    secrets:
+      NUGET_API_KEY: ${{ secrets.GITHUB_TOKEN }}
+
+  publish_nuget:
+    name: Publish to NuGet
+    uses: flobernd/workflows/.github/workflows/dotnet_nuget_push.yml@v1
+    needs: build_nuget
+    with:
+      nuget_source: https://api.nuget.org/v3/index.json
+      nupkg_artifact: nupkg
+    secrets:
+      NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
