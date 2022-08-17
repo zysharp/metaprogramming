@@ -24,6 +24,7 @@
     <Product>ZySharp</Product>
     <NeutralLanguage>en</NeutralLanguage>
 
+    <IsPublishable>false</IsPublishable>
     <IsPackable>true</IsPackable>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <IncludeSymbols>true</IncludeSymbols>
@@ -71,9 +72,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Bcl.HashCode" Version="1.1.1" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Dependencies\ZySharp.Validation\ZySharp.Validation\ZySharp.Validation.csproj" />
+    <PackageReference Include="ZySharp.Validation" Version="1.2.6" />
   </ItemGroup>
 </Project>

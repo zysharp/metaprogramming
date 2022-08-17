@@ -7,16 +7,18 @@
         "resolved": "2022.1.0",
         "contentHash": "ASfpoFJxiRsC9Xc4TWuPM41Zb/gl64xwfMOhnOZ3RnVWGYIZchjpWQV5zshJgoc/ZxVtgjaF7b577lURj7E6ig=="
       },
+      "ZySharp.Validation": {
+        "type": "Transitive",
+        "resolved": "1.2.6",
+        "contentHash": "nz8AfHi7E59k9ArgapYXG/UHQJNCGHW3LVcj/spHlKZErjMMvjDuzOoKiToqIZk2UtRnoYPR2XE4Nh9XlnM7KA==",
+        "dependencies": {
+          "JetBrains.Annotations": "2022.1.0"
+        }
+      },
       "zysharp.metaprogramming": {
         "type": "Project",
         "dependencies": {
-          "ZySharp.Validation": "1.1.8"
-        }
-      },
-      "zysharp.validation": {
-        "type": "Project",
-        "dependencies": {
-          "JetBrains.Annotations": "2022.1.0"
+          "ZySharp.Validation": "[1.2.6, )"
         }
       }
     }
