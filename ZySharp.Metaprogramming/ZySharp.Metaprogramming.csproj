@@ -37,6 +37,10 @@
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="packages.lock.json" Visible="false" />
+  </ItemGroup>
+
   <PropertyGroup Label="Common Debug Settings">
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
@@ -65,13 +69,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="all" />
-    <PackageReference Include="Nerdbank.GitVersioning" Version="3.5.109" PrivateAssets="all" />
-    <PackageReference Include="Nullable" Version="1.3.1" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" PrivateAssets="all" />
+    <PackageReference Include="Nerdbank.GitVersioning" PrivateAssets="all" />
+    <PackageReference Include="Nullable" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Bcl.HashCode" Version="1.1.1" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
-    <PackageReference Include="ZySharp.Validation" Version="1.2.6" />
+    <PackageReference Include="Microsoft.Bcl.HashCode" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
+    <PackageReference Include="ZySharp.Validation" />
   </ItemGroup>
 </Project>
