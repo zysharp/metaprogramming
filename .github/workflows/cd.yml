@@ -17,7 +17,7 @@ jobs:
     uses: flobernd/workflows/.github/workflows/find_solution.yml@v1
 
   build_nuget:
-    name: Packages
+    name: Build
     uses: flobernd/workflows/.github/workflows/dotnet_pack.yml@v1
     needs: find_solution
     with:

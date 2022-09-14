@@ -52,18 +52,3 @@ jobs:
       test_results_artifact: test-results
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-  build_nuget:
-    name: Packages
-    uses: flobernd/workflows/.github/workflows/dotnet_pack.yml@v1
-    needs: [find_solution, sonarcloud]
-    with:
-      solution: ${{ needs.find_solution.outputs.solution }}
-      project_filter: |
-        **/*.csproj
-        !Dependencies/**
-        !**/*.Examples.csproj
-        !**/*.Tests.csproj
-      use_nuget_cache: true
-      nuget_cache_key: '**/packages.lock.json'
-      artifact: nupkg

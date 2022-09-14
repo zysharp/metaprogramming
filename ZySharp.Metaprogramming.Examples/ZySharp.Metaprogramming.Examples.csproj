@@ -10,6 +10,7 @@
     <RestoreLockedMode Condition="'$(ContinuousIntegrationBuild)' == 'true'" />
 
     <OutputType>Exe</OutputType>
+    <IsPublishable>false</IsPublishable>
     <IsPackable>false</IsPackable>
 
     <EnableNETAnalyzers>true</EnableNETAnalyzers>

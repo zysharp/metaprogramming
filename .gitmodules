@@ -1,3 +1,0 @@
-[submodule "Dependencies/ZySharp.Validation"]
-	path = Dependencies/ZySharp.Validation
-	url = https://github.com/flobernd/zysharp-validation.git

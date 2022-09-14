@@ -9,20 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZySharp.Metaprogramming.Tes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZySharp.Metaprogramming.Examples", "ZySharp.Metaprogramming.Examples\ZySharp.Metaprogramming.Examples.csproj", "{AFAA753D-DFC0-4520-A688-A18A762ACF6B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencies", "{D2D1B2B7-27A4-4172-8AB5-2B8FC3AA117E}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ZySharp.Validation", "ZySharp.Validation", "{CA47CD3A-6095-47AF-B5C4-AA41B4ABAE60}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZySharp.Validation", "Dependencies\ZySharp.Validation\ZySharp.Validation\ZySharp.Validation.csproj", "{078B2A9B-706C-425B-96BC-DC3602651B12}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{480F96DD-6F16-4691-85E6-C609F0C114E5}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZySharp.Validation.Examples", "Dependencies\ZySharp.Validation\ZySharp.Validation.Examples\ZySharp.Validation.Examples.csproj", "{8EC57064-FB67-48E6-974A-3DE8F642FEC2}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZySharp.Validation.Tests", "Dependencies\ZySharp.Validation\ZySharp.Validation.Tests\ZySharp.Validation.Tests.csproj", "{606423C6-DA83-4FD1-BF73-67419A836BD9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,27 +32,9 @@ Global
 		{AFAA753D-DFC0-4520-A688-A18A762ACF6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFAA753D-DFC0-4520-A688-A18A762ACF6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFAA753D-DFC0-4520-A688-A18A762ACF6B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{078B2A9B-706C-425B-96BC-DC3602651B12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{078B2A9B-706C-425B-96BC-DC3602651B12}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{078B2A9B-706C-425B-96BC-DC3602651B12}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{078B2A9B-706C-425B-96BC-DC3602651B12}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8EC57064-FB67-48E6-974A-3DE8F642FEC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8EC57064-FB67-48E6-974A-3DE8F642FEC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8EC57064-FB67-48E6-974A-3DE8F642FEC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8EC57064-FB67-48E6-974A-3DE8F642FEC2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{606423C6-DA83-4FD1-BF73-67419A836BD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{606423C6-DA83-4FD1-BF73-67419A836BD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{606423C6-DA83-4FD1-BF73-67419A836BD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{606423C6-DA83-4FD1-BF73-67419A836BD9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{CA47CD3A-6095-47AF-B5C4-AA41B4ABAE60} = {D2D1B2B7-27A4-4172-8AB5-2B8FC3AA117E}
-		{078B2A9B-706C-425B-96BC-DC3602651B12} = {CA47CD3A-6095-47AF-B5C4-AA41B4ABAE60}
-		{8EC57064-FB67-48E6-974A-3DE8F642FEC2} = {CA47CD3A-6095-47AF-B5C4-AA41B4ABAE60}
-		{606423C6-DA83-4FD1-BF73-67419A836BD9} = {CA47CD3A-6095-47AF-B5C4-AA41B4ABAE60}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {138BB4A1-75A4-470B-85A3-CD9CDC5CECDF}
