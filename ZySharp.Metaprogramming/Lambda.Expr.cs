@@ -63,6 +63,92 @@ namespace ZySharp.Metaprogramming
             return lambda;
         }
 
-        // TODO: T16
+        /// <inheritdoc cref="Expr{TResult}"/>
+        [Pure, ExcludeFromCodeCoverage]
+        public static Expression<Func<T1, T2, T3, T4, T5, T6, TResult>> Expr<T1, T2, T3, T4, T5, T6, TResult>(
+            Expression<Func<T1, T2, T3, T4, T5, T6, TResult>> lambda)
+        {
+            return lambda;
+        }
+
+        /// <inheritdoc cref="Expr{TResult}"/>
+        [Pure, ExcludeFromCodeCoverage]
+        public static Expression<Func<T1, T2, T3, T4, T5, T6, T7, TResult>> Expr<T1, T2, T3, T4, T5, T6, T7, TResult>(
+            Expression<Func<T1, T2, T3, T4, T5, T6, T7, TResult>> lambda)
+        {
+            return lambda;
+        }
+
+        /// <inheritdoc cref="Expr{TResult}"/>
+        [Pure, ExcludeFromCodeCoverage]
+        public static Expression<Func<T1, T2, T3, T4, T5, T6, T7, T8, TResult>> Expr<T1, T2, T3, T4, T5, T6, T7, T8, TResult>(
+            Expression<Func<T1, T2, T3, T4, T5, T6, T7, T8, TResult>> lambda)
+        {
+            return lambda;
+        }
+
+        /// <inheritdoc cref="Expr{TResult}"/>
+        [Pure, ExcludeFromCodeCoverage]
+        public static Expression<Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, TResult>> Expr<T1, T2, T3, T4, T5, T6, T7, T8, T9, TResult>(
+            Expression<Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, TResult>> lambda)
+        {
+            return lambda;
+        }
+
+        /// <inheritdoc cref="Expr{TResult}"/>
+        [Pure, ExcludeFromCodeCoverage]
+        public static Expression<Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, TResult>> Expr<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, TResult>(
+            Expression<Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, TResult>> lambda)
+        {
+            return lambda;
+        }
+
+        /// <inheritdoc cref="Expr{TResult}"/>
+        [Pure, ExcludeFromCodeCoverage]
+        public static Expression<Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, TResult>> Expr<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, TResult>(
+            Expression<Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, TResult>> lambda)
+        {
+            return lambda;
+        }
+
+        /// <inheritdoc cref="Expr{TResult}"/>
+        [Pure, ExcludeFromCodeCoverage]
+        public static Expression<Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, TResult>> Expr<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, TResult>(
+            Expression<Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, TResult>> lambda)
+        {
+            return lambda;
+        }
+
+        /// <inheritdoc cref="Expr{TResult}"/>
+        [Pure, ExcludeFromCodeCoverage]
+        public static Expression<Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, TResult>> Expr<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, TResult>(
+            Expression<Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, TResult>> lambda)
+        {
+            return lambda;
+        }
+
+        /// <inheritdoc cref="Expr{TResult}"/>
+        [Pure, ExcludeFromCodeCoverage]
+        public static Expression<Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, TResult>> Expr<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, TResult>(
+            Expression<Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, TResult>> lambda)
+        {
+            return lambda;
+        }
+
+        /// <inheritdoc cref="Expr{TResult}"/>
+        [Pure, ExcludeFromCodeCoverage]
+        public static Expression<Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, TResult>> Expr<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, TResult>(
+            Expression<Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, TResult>> lambda)
+        {
+            return lambda;
+        }
+
+        /// <inheritdoc cref="Expr{TResult}"/>
+        [Pure, ExcludeFromCodeCoverage]
+        public static Expression<Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, TResult>> Expr<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, TResult>(
+            Expression<Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16, TResult>> lambda)
+        {
+            return lambda;
+        }
     }
 }
