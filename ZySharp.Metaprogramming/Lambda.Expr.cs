@@ -7,6 +7,8 @@ namespace ZySharp.Metaprogramming
 {
     public static partial class Lambda
     {
+#pragma warning disable S2436, S107
+
         /// <summary>
         /// Returns the given anonymous method as a lambda expression tree.
         /// </summary>
@@ -150,5 +152,7 @@ namespace ZySharp.Metaprogramming
         {
             return lambda;
         }
+
+#pragma warning restore S2436, S107
     }
 }
