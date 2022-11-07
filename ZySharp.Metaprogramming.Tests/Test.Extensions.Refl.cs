@@ -1,9 +1,8 @@
-﻿using Xunit;
+using Xunit;
 
-namespace ZySharp.Metaprogramming.Tests
+namespace ZySharp.Metaprogramming.Tests;
+
+[Trait("Category", "Unit")]
+public sealed partial class TestReflExtensions
 {
-    [Trait("Category", "Unit")]
-    public sealed partial class TestReflExtensions
-    {
-    }
 }

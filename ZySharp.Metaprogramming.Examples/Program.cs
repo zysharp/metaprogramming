@@ -1,12 +1,11 @@
-﻿using System;
+using System;
 
-namespace ZySharp.Metaprogramming.Examples
+namespace ZySharp.Metaprogramming.Examples;
+
+public static class Program
 {
-    public static class Program
+    private static void Main()
     {
-        private static void Main()
-        {
-            throw new NotImplementedException();
-        }
+        throw new NotImplementedException();
     }
 }
