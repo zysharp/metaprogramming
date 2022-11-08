@@ -12,8 +12,8 @@
 
 # The 'suggestion' verbosity is used according to personal preference to disable certain rules.
 
-# Source:
-# https://github.com/zysharp/templates
+# Author: Florian Bernd
+# Source: https://github.com/zysharp/templates
 
 ### Common Settings ################################################################################
 
@@ -114,6 +114,7 @@ dotnet_code_quality.CA1005.api_surface = protected, public, internal, private
 # CA1008: Enums should have zero value
 dotnet_diagnostic.CA1008.severity = warning
 dotnet_code_quality.CA1008.api_surface = protected, public, internal, private
+dotnet_code_quality.CA1008.additional_enum_none_names = Never|Nothing
 # CA1010: Collections should implement generic interface
 dotnet_diagnostic.CA1010.severity = warning
 dotnet_code_quality.CA1010.api_surface = protected, public, internal, private
@@ -415,6 +416,7 @@ dotnet_diagnostic.CA1824.severity = warning
 dotnet_diagnostic.CA1825.severity = error
 # CA1826: Use property instead of Linq Enumerable method
 dotnet_diagnostic.CA1826.severity = suggestion
+dotnet_code_quality.CA1826.exclude_ordefault_methods = true
 # CA1827: Do not use Count/LongCount when Any can be used
 dotnet_diagnostic.CA1827.severity = warning
 # CA1828: Do not use CountAsync/LongCountAsync when AnyAsync can be used
@@ -494,6 +496,9 @@ dotnet_diagnostic.IL3002.severity = error
 dotnet_diagnostic.CA2000.severity = warning
 dotnet_code_quality.CA2000.excluded_symbol_names = 
 dotnet_code_quality.CA2000.excluded_type_names_with_derived_types = 
+dotnet_code_quality.dispose_analysis_kind = AllPaths
+dotnet_code_quality.dispose_ownership_transfer_at_constructor = true
+dotnet_code_quality.dispose_ownership_transfer_at_method_call = false
 # CA2002: Do not lock on objects with weak identity
 dotnet_diagnostic.CA2002.severity = warning
 # CA2007: Do not directly await a 'Task'
