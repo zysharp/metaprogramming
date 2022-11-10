@@ -1,12 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net4.8;netcoreapp3.1;net6.0</TargetFrameworks>
-    <LangVersion>latest</LangVersion>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>disable</ImplicitUsings>
+    <TargetFrameworks>net4.8;netcoreapp3.1;net6;net7</TargetFrameworks>
 
-    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <!-- https://github.com/NuGet/Home/issues/9195 -->
     <!-- https://github.com/NuGet/Home/issues/10456 -->
     <!-- https://github.com/dotnet/sdk/issues/26505 -->
@@ -15,10 +11,6 @@
 
     <IsPublishable>false</IsPublishable>
     <IsPackable>false</IsPackable>
-
-    <EnableNETAnalyzers>true</EnableNETAnalyzers>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
 
   <ItemGroup>
