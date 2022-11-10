@@ -86,7 +86,7 @@ public sealed partial class TestExprExtensions
     {
         var input = Expression.Add(Expression.Parameter(typeof(int)), Expression.Constant(0));
 
-        Assert.Throws<EvaluationException>(() => input.Evaluate());
+        Assert.Throws<EvaluationException>(input.Evaluate);
     }
 
     [Fact]
