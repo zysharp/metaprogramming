@@ -30,7 +30,7 @@ public static partial class Expr
     /// <see cref="Invoke{TResult}"/>.
     /// </remarks>
     [Pure]
-    [return: NotNullIfNotNull("expression")]
+    [return: NotNullIfNotNull(nameof(expression))]
     public static Expression<TDelegate>? Expand<TDelegate>(this Expression<TDelegate>? expression)
     {
         return Expand((Expression?)expression) as Expression<TDelegate>;
@@ -38,7 +38,7 @@ public static partial class Expr
 
     /// <inheritdoc cref="Expand{TDelegate}"/>
     [Pure]
-    [return: NotNullIfNotNull("expression")]
+    [return: NotNullIfNotNull(nameof(expression))]
     public static Expression? Expand(this Expression? expression)
     {
         return new ExpandVisitor().Visit(expression);
