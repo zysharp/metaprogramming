@@ -20,7 +20,7 @@ public static partial class ExprExtensions
     /// snapshots of certain values.
     /// </remarks>
     [Pure]
-    [return: NotNullIfNotNull("expression")]
+    [return: NotNullIfNotNull(nameof(expression))]
     public static Expression<TDelegate>? Snapshot<TDelegate>(this Expression<TDelegate>? expression)
     {
         return Snapshot((Expression?)expression) as Expression<TDelegate>;
@@ -28,7 +28,7 @@ public static partial class ExprExtensions
 
     /// <inheritdoc cref="Snapshot{TDelegate}(Expression{TDelegate}?)"/>
     [Pure]
-    [return: NotNullIfNotNull("expression")]
+    [return: NotNullIfNotNull(nameof(expression))]
     public static Expression? Snapshot(this Expression? expression)
     {
         return new SnapshotVisitor().Visit(expression);

@@ -16,7 +16,7 @@ public static partial class ExprExtensions
     /// a reduced node does not satisfies certain invariants (see <see cref="Expression.ReduceAndCheck()"/>).
     /// </remarks>
     [Pure]
-    [return: NotNullIfNotNull("expression")]
+    [return: NotNullIfNotNull(nameof(expression))]
     public static Expression? ReduceRecursive(this Expression? expression)
     {
         return new ReduceVisitor(false).Visit(expression);
@@ -32,7 +32,7 @@ public static partial class ExprExtensions
     /// a reduced node does not satisfies certain invariants (see <see cref="Expression.ReduceAndCheck()"/>).
     /// </remarks>
     [Pure]
-    [return: NotNullIfNotNull("expression")]
+    [return: NotNullIfNotNull(nameof(expression))]
     public static Expression? ReduceExtensionsRecursive(this Expression? expression)
     {
         return new ReduceVisitor(true).Visit(expression);

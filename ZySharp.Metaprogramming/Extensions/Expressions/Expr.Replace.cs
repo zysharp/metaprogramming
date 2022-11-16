@@ -18,7 +18,7 @@ public static partial class ExprExtensions
     /// <param name="newNode">The new sub-expression.</param>
     /// <returns>The transformed expression tree.</returns>
     [Pure]
-    [return: NotNullIfNotNull("expression")]
+    [return: NotNullIfNotNull(nameof(expression))]
     public static Expression<TDelegate>? Replace<TDelegate>(this Expression<TDelegate>? expression,
         Expression oldNode, Expression newNode)
     {
@@ -27,7 +27,7 @@ public static partial class ExprExtensions
 
     /// <inheritdoc cref="Replace{TDelegate}(Expression{TDelegate}?,Expression,Expression)"/>
     [Pure]
-    [return: NotNullIfNotNull("expression")]
+    [return: NotNullIfNotNull(nameof(expression))]
     public static Expression? Replace(this Expression? expression, Expression oldNode, Expression newNode)
     {
         ValidateArgument.For(oldNode, nameof(oldNode), v => v.NotNull());
@@ -46,7 +46,7 @@ public static partial class ExprExtensions
     /// <param name="map">A map that maps each expression nodes to their respective replacement nodes.</param>
     /// <returns>The resulting expression tree.</returns>
     [Pure]
-    [return: NotNullIfNotNull("expression")]
+    [return: NotNullIfNotNull(nameof(expression))]
     public static Expression<TDelegate>? Replace<TDelegate>(this Expression<TDelegate>? expression,
         IDictionary<Expression, Expression> map)
     {
@@ -55,7 +55,7 @@ public static partial class ExprExtensions
 
     /// <inheritdoc cref="Replace{TDelegate}(Expression{TDelegate}?,Expression,Expression)"/>
     [Pure]
-    [return: NotNullIfNotNull("expression")]
+    [return: NotNullIfNotNull(nameof(expression))]
     public static Expression? Replace(this Expression? expression, IDictionary<Expression, Expression> map)
     {
         ValidateArgument.For(map, nameof(map), v => v.NotNull()
